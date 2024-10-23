@@ -24,7 +24,8 @@ frame_amount=len(t)
 def update_plot(num):
 
 
-
+    print(num)
+    print(t[0:num])
     return
 
 fig=plt.figure(figsize=(16,9),dpi=120,facecolor=(0.8,0.8,0.8))
@@ -35,6 +36,5 @@ ax0=fig.add_subplot(gs[0,:],facecolor=(0.9,0.9,0.9))
 
 
 
-plane_ani=animation.FuncAnimation(fig,update_plot,
-        frames=frame_amount,interval=20,repeat=True,blit=True)
+plane_ani=animation.FuncAnimation(fig,update_plot,frames=frame_amount,interval=20,repeat=True,blit=True)
 plt.show()
