@@ -12,7 +12,7 @@ dt=0.005 # [hrs]
 t=np.arange(t0,t_end+dt,dt)
 
 # Create an x array
-x=800*t # [km]
+x=10*800*t # [km]
 
 # Create a y array
 altitude=2 # [km]
@@ -20,16 +20,16 @@ y=np.ones(len(t))*altitude
 
 
 #################### ANIMATION ####################
-frame_amount=len(t)
+frame_amount=int(len(t)/10)
 
 dot=np.zeros(frame_amount)
-n=20
+n=2
 for i in range(0,frame_amount):
     if i==n:
         dot[i]=x[n]
-        n+=20
+        n+=2
     else:
-        dot[i]=x[n-20]
+        dot[i]=x[n-2]
 
 def update_plot(num):
     plane_trajectory.set_data(dot[0:num],y[0:num])
@@ -75,10 +75,10 @@ stopwatch0=ax0.text(1350,0.85,'',size=20,color='g',bbox=box_object)
 box_object2=dict(boxstyle='square',fc=(0.9,0.9,0.9),ec='g',lw=1)
 dist_counter0=ax0.text(1350,0.3,'',size=20,color='r',bbox=box_object2)
 
-
-plt.xlim(x[0],x[-1])
+# Subplot properties
+plt.xlim(x[0],x[-1]/10)
 plt.ylim(0,y[0]+1)
-plt.xticks(np.arange(x[0],x[-1]+1,x[-1]/4),size=15)
+plt.xticks(np.arange(x[0],x[-1]/10+1,(x[-1]/10)/4),size=15)
 plt.yticks(np.arange(0,y[-1]+2,1),size=15)
 plt.xlabel('x-distance',fontsize=15)
 plt.ylabel('y-distance',fontsize=15)
