@@ -46,6 +46,8 @@ def update_plot(num):
     return plane_trajectory,plane_1,plane_2,plane_3,plane_4,plane_5,\
         stopwatch0,dist_counter0
 
+
+
 fig=plt.figure(figsize=(16,9),dpi=120,facecolor=(0.8,0.8,0.8))
 gs=gridspec.GridSpec(2,2)
 
@@ -61,6 +63,7 @@ plane_2,=ax0.plot([],[],'k',linewidth=5)
 plane_3,=ax0.plot([],[],'k',linewidth=5)
 plane_4,=ax0.plot([],[],'k',linewidth=3)
 plane_5,=ax0.plot([],[],'k',linewidth=3)
+
 
 # Draw buildings
 building_1,=ax0.plot([100,100],[0,1.0],'k',linewidth=7)
@@ -84,6 +87,19 @@ plt.xlabel('x-distance',fontsize=15)
 plt.ylabel('y-distance',fontsize=15)
 plt.title('Airplane',fontsize=20)
 plt.grid(True)
+
+
+# Subplot 2
+ax2=fig.add_subplot(gs[1,0],facecolor=(0.9,0.9,0.9))
+plt.xlim(t[0],t[-1])
+plt.ylim(x[0],x[-1])
+plt.xticks(np.arange(t[0],t[-1]+dt,t[-1]/4))
+plt.yticks(np.arange(x[0],x[-1]+1,x[-1]/4))
+plt.xlabel('time [hrs]',fontsize=15)
+plt.ylabel('x-distance [km]',fontsize=15)
+plt.title('X-distance VS time',fontsize=15)
+plt.grid(True)
+plt.legend(loc='upper left',fontsize='x-large')
 
 plane_ani=animation.FuncAnimation(fig,update_plot,frames=frame_amount,interval=20,repeat=True,blit=True)
 plt.show()
