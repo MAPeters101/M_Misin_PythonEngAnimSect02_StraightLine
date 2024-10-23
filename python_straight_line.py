@@ -53,9 +53,14 @@ def update_plot(num):
     horizontal_line.set_data([t[0],t[num]],[x[num],x[num]])
     vertical_line.set_data([t[num],t[num]],[x[0],x[num]])
 
+    # 3rd subplot
+    speed.set_data(t[0:num],speed_x[0:num])
+    vertical_line_ax4.set_data([t[num],t[num]],[0,speed_x[num]])
+
+
     return plane_trajectory,plane_1,plane_2,plane_3,plane_4,plane_5,\
         stopwatch0,dist_counter0,x_dist,horizontal_line,vertical_line, \
-        ax0_vertical
+        ax0_vertical,speed,vertical_line_ax4
 
 
 fig=plt.figure(figsize=(16,9),dpi=120,facecolor=(0.8,0.8,0.8))
@@ -117,8 +122,8 @@ plt.legend(loc='upper left',fontsize='x-large')
 
 # Subplot 3
 ax4=fig.add_subplot(gs[1,1],facecolor=(0.9,0.9,0.9))
-
-
+speed,=ax4.plot([],[],'-b',linewidth=3,label='deltaX/deltaT = 800')
+vertical_line_ax4,=ax4.plot([],[],'b:o',linewidth=2)
 plt.xlim(t[0],t[-1])
 plt.ylim(x[0],speed_x[-1]*2)
 plt.xticks(np.arange(t[0],t[-1]+dt,t[-1]/4),size=10)
