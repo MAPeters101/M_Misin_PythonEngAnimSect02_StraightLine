@@ -29,13 +29,14 @@ def update_plot(num):
     return plane_trajectory,
 
 fig=plt.figure(figsize=(16,9),dpi=120,facecolor=(0.8,0.8,0.8))
+fig2=plt.figure(figsize=(4,3),dpi=120,facecolor=(0,0,0))
 gs=gridspec.GridSpec(2,2)
 
 # Subplot 1
-ax0=fig.add_subplot(gs[0,:],facecolor=(0.9,0.9,0.9))
+ax0=fig2.add_subplot(gs[0,:],facecolor=(0.9,0.9,0.9))
 plane_trajectory,=ax0.plot([],[],'g',linewidth=2)
 plt.xlim(x[0],x[-1])
 plt.ylim(0,y[0]+1)
 
-plane_ani=animation.FuncAnimation(fig,update_plot,frames=frame_amount,interval=20,repeat=True,blit=True)
+plane_ani=animation.FuncAnimation(fig2,update_plot,frames=frame_amount,interval=20,repeat=True,blit=True)
 plt.show()
