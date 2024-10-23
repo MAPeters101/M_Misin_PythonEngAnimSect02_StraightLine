@@ -40,6 +40,8 @@ def update_plot(num):
     plane_4.set_data([x[num]-40,x[num]-30],[y[num]+0.15,y[num]])
     plane_5.set_data([x[num]-40,x[num]-30],[y[num]-0.15,y[num]])
 
+    ax0_vertical.set_data([x[num],x[num]],[0,y[num]])
+
     stopwatch0.set_text(str(round(t[num],1))+' hrs')
     dist_counter0.set_text(str(int(x[num]))+' km')
 
@@ -50,8 +52,8 @@ def update_plot(num):
     vertical_line.set_data([t[num],t[num]],[x[0],x[num]])
 
     return plane_trajectory,plane_1,plane_2,plane_3,plane_4,plane_5,\
-        stopwatch0,dist_counter0,x_dist,horizontal_line,vertical_line
-
+        stopwatch0,dist_counter0,x_dist,horizontal_line,vertical_line, \
+        ax0_vertical
 
 
 fig=plt.figure(figsize=(16,9),dpi=120,facecolor=(0.8,0.8,0.8))
@@ -70,6 +72,7 @@ plane_3,=ax0.plot([],[],'k',linewidth=5)
 plane_4,=ax0.plot([],[],'k',linewidth=3)
 plane_5,=ax0.plot([],[],'k',linewidth=3)
 
+ax0_vertical,=ax0.plot([],[],'k:o',linewidth=2)
 
 # Draw buildings
 building_1,=ax0.plot([100,100],[0,1.0],'k',linewidth=7)
