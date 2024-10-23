@@ -56,14 +56,19 @@ def update_plot(num):
     # 3rd subplot
     speed.set_data(t[0:num],speed_x[0:num])
     vertical_line_ax4.set_data([t[num],t[num]],[0,speed_x[num]])
+    if num!=0:
+        division_x_dist.set_text(str(int(x[num])))
+        division_time.set_text(str(round(t[num],3)))
+        division_speed.set_text('= '+str(int(round(x[num]/t[num],1)))+' km/hr')
 
 
     return plane_trajectory,plane_1,plane_2,plane_3,plane_4,plane_5,\
         stopwatch0,dist_counter0,x_dist,horizontal_line,vertical_line, \
-        ax0_vertical,speed,vertical_line_ax4
+        ax0_vertical,speed,vertical_line_ax4,division_x_dist,division_time, \
+        division_speed
 
 
-fig=plt.figure(figsize=(16,9),dpi=120,facecolor=(0.8,0.8,0.8))
+fig=plt.figure(figsize=(16,9),dpi=80,facecolor=(0.8,0.8,0.8))
 gs=gridspec.GridSpec(2,2)
 
 # Subplot 1
@@ -124,6 +129,11 @@ plt.legend(loc='upper left',fontsize='x-large')
 ax4=fig.add_subplot(gs[1,1],facecolor=(0.9,0.9,0.9))
 speed,=ax4.plot([],[],'-b',linewidth=3,label='deltaX/deltaT = 800')
 vertical_line_ax4,=ax4.plot([],[],'b:o',linewidth=2)
+division_line,=ax4.plot([0.08,0.40],[995,995],'k',linewidth=1)
+division_x_dist=ax4.text(0.1,1015,'',fontsize=20,color='r')
+division_time=ax4.text(0.1,865,'',fontsize=20,color='g')
+division_speed=ax4.text(0.44,950,'',fontsize=20,color='b')
+
 plt.xlim(t[0],t[-1])
 plt.ylim(x[0],speed_x[-1]*2)
 plt.xticks(np.arange(t[0],t[-1]+dt,t[-1]/4),size=10)
