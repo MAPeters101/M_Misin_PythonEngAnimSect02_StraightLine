@@ -12,7 +12,7 @@ dt=0.005 # [hrs]
 t=np.arange(t0,t_end+dt,dt)
 
 # Create an x array
-x=20*800*t # [km]
+x=800*t # [km]
 
 # Create a y array
 altitude=2 # [km]
@@ -20,7 +20,7 @@ y=np.ones(len(t))*altitude
 
 
 #################### ANIMATION ####################
-frame_amount=int(len(t)/20)
+frame_amount=len(t)
 
 def update_plot(num):
     plane_trajectory.set_data(x[0:num],y[0:num])
@@ -33,7 +33,7 @@ gs=gridspec.GridSpec(2,2)
 # Subplot 1
 ax0=fig.add_subplot(gs[0,:],facecolor=(0.9,0.9,0.9))
 plane_trajectory,=ax0.plot([],[],'g',linewidth=2)
-plt.xlim(x[0],x[-1]/20)
+plt.xlim(x[0],x[-1])
 plt.ylim(0,y[0]+1)
 
 
