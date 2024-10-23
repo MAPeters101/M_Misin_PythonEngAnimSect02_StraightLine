@@ -27,6 +27,11 @@ def update_plot(num):
 
     return
 
+fig=plt.figure(figsize=(16,9),dpi=120,facecolor=(0.8,0.8,0.8))
+gs=gridspec.GridSpec(2,2)
+
+# Subplot 1
+ax0=fig.add_subplot(gs[0,:],facecolor=(0.9,0.9,0.9))
 
 
 
