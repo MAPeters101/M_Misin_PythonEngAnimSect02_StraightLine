@@ -23,20 +23,27 @@ y=np.ones(len(t))*altitude
 frame_amount=len(t)
 
 def update_plot(num):
-
     plane_trajectory.set_data(x[0:num],y[0:num])
+    plane_trajectory2.set_data(x[0:num],y[0:num])
 
-    return plane_trajectory,
+    return plane_trajectory,plane_trajectory2
 
 fig=plt.figure(figsize=(16,9),dpi=120,facecolor=(0.8,0.8,0.8))
-fig2=plt.figure(figsize=(4,3),dpi=120,facecolor=(0,0,0))
 gs=gridspec.GridSpec(2,2)
+gs2=gridspec.GridSpec(3,3)
 
 # Subplot 1
-ax0=fig2.add_subplot(gs[0,:],facecolor=(0.9,0.9,0.9))
+ax0=fig.add_subplot(gs2[1,1],facecolor=(0.9,0.9,0.9))
 plane_trajectory,=ax0.plot([],[],'g',linewidth=2)
 plt.xlim(x[0],x[-1])
 plt.ylim(0,y[0]+1)
 
-plane_ani=animation.FuncAnimation(fig2,update_plot,frames=frame_amount,interval=20,repeat=True,blit=True)
+
+ax2=fig.add_subplot(gs2[0,2],facecolor=(1,1,1))
+
+plane_trajectory2,=ax2.plot([],[],'r',linewidth=8)
+plt.xlim(x[0],x[-1])
+plt.ylim(0,y[0]+1)
+
+plane_ani=animation.FuncAnimation(fig,update_plot,frames=frame_amount,interval=20,repeat=True,blit=True)
 plt.show()
