@@ -24,7 +24,7 @@ frame_amount=len(t)
 
 def update_plot(num):
     plane_trajectory.set_data(x[0:num],y[0:num])
-    plane_1.set_data([400,800],[1,2.5])
+    plane_1.set_data([x[num]-200,x[num]+200],[y[num]-0.75,y[num]+0.75])
 
     return plane_trajectory,plane_1
 
