@@ -30,9 +30,10 @@ for i in range(0,frame_amount):
         n+=20
     else:
         dot[i]=x[n-20]
+doty=dot/1000
 
 def update_plot(num):
-    plane_trajectory.set_data(dot[0:num],y[0:num])
+    plane_trajectory.set_data(dot[0:num],doty[0:num])
 
     plane_1.set_data([x[num]-40,x[num]+20],[y[num],y[num]])
     plane_2.set_data([x[num]-20,x[num]],[y[num]+0.3,y[num]])
