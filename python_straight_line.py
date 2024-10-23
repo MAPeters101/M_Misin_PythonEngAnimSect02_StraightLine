@@ -12,7 +12,7 @@ dt=0.005 # [hrs]
 t=np.arange(t0,t_end+dt,dt)
 
 # Create an x array
-x=800*t # [km]
+x=200*t**3 # [km]
 
 # Create a y array
 altitude=2 # [km]
