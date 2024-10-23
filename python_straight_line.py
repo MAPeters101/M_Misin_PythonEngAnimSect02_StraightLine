@@ -50,9 +50,11 @@ building_2,=ax0.plot([300,300],[0,1.0],'k',linewidth=7)
 building_3,=ax0.plot([700,700],[0,0.7],'k',linewidth=15)
 building_4,=ax0.plot([900,900],[0,0.9],'k',linewidth=10)
 building_5,=ax0.plot([1300,1300],[0,1.0],'k',linewidth=20)
+
 plt.xlim(x[0],x[-1])
 plt.ylim(0,y[0]+1)
-
+plt.xticks(np.arange(x[0],x[-1]+1,x[-1]/4),size=15)
+plt.yticks(np.arange(0,y[-1]+2,1),size=15)
 
 plane_ani=animation.FuncAnimation(fig,update_plot,frames=frame_amount,interval=20,repeat=True,blit=True)
 plt.show()
