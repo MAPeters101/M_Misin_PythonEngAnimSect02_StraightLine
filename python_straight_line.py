@@ -18,5 +18,18 @@ x=800*t # [km]
 altitude=2 # [km]
 y=np.ones(len(t))*altitude
 
+#################### ANIMATION ####################
+frame_amount=len(t)
+
+def update_plot(num):
 
 
+
+    return
+
+
+
+
+plane_ani=animation.FuncAnimation(fig,update_plot,
+        frames=frame_amount,interval=20,repeat=True,blit=True)
+plt.show()
