@@ -45,9 +45,12 @@ def update_plot(num):
 
     # 2nd subplot
     x_dist.set_data(t[0:num],x[0:num])
+    horizontal_line.set_data([t[0],t[num]],[x[num],x[num]])
+    horizontal_line.set_data([t[0],t[num]],[x[num],x[num]])
+    vertical_line.set_data([t[num],t[num]],[x[0],x[num]])
 
     return plane_trajectory,plane_1,plane_2,plane_3,plane_4,plane_5,\
-        stopwatch0,dist_counter0,x_dist
+        stopwatch0,dist_counter0,x_dist,horizontal_line,vertical_line
 
 
 
@@ -95,6 +98,8 @@ plt.grid(True)
 # Subplot 2
 ax2=fig.add_subplot(gs[1,0],facecolor=(0.9,0.9,0.9))
 x_dist,=ax2.plot([],[],'-b',linewidth=3,label='X=800*t')
+horizontal_line,=ax2.plot([],[],'r:o',linewidth=2,label='Horizontal line')
+vertical_line,=ax2.plot([],[],'g:o',linewidth=2,label='Vertical line')
 plt.xlim(t[0],t[-1])
 plt.ylim(x[0],x[-1])
 plt.xticks(np.arange(t[0],t[-1]+dt,t[-1]/4))
