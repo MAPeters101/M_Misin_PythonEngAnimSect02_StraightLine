@@ -18,6 +18,8 @@ x=800*t # [km]
 altitude=2 # [km]
 y=np.ones(len(t))*altitude
 
+# Speed in the x direction
+speed_x=np.ones(len(t))*800
 #################### ANIMATION ####################
 frame_amount=len(t)
 dot=np.zeros(frame_amount)
@@ -112,6 +114,22 @@ plt.ylabel('x-distance [km]',fontsize=15)
 plt.title('X-distance VS time',fontsize=15)
 plt.grid(True)
 plt.legend(loc='upper left',fontsize='x-large')
+
+# Subplot 3
+ax4=fig.add_subplot(gs[1,1],facecolor=(0.9,0.9,0.9))
+
+
+plt.xlim(t[0],t[-1])
+plt.ylim(x[0],speed_x[-1]*2)
+plt.xticks(np.arange(t[0],t[-1]+dt,t[-1]/4),size=10)
+plt.yticks(np.arange(0,speed_x[-1]*2+1,speed_x[-1]*2/4),size=10)
+plt.xlabel('time [hrs]',fontsize=15)
+plt.ylabel('speed [km/hr]',fontsize=15)
+plt.title('Speed as a function of time',fontsize=15)
+plt.grid(True)
+plt.legend(loc='upper right',fontsize='x-large')
+
+
 
 plane_ani=animation.FuncAnimation(fig,update_plot,frames=frame_amount,interval=20,repeat=True,blit=True)
 plt.show()
