@@ -33,6 +33,7 @@ gs=gridspec.GridSpec(2,2)
 # Subplot 1
 ax0=fig.add_subplot(gs[0,:],facecolor=(0.9,0.9,0.9))
 plane_trajectory,=ax0.plot([],[],'g',linewidth=2)
+plane_1,=ax0.plot([],[],'k',linewidth=10)
 plt.xlim(x[0],x[-1])
 plt.ylim(0,y[0]+1)
 
