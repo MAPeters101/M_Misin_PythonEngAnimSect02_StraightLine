@@ -12,16 +12,16 @@ dt=0.005 # [hrs]
 t=np.arange(t0,t_end+dt,dt)
 
 # Create an x array
-a=200
-n=3
-x=a*t**n # [km]
+a=400
+n2=2
+x=a*t**n2 # [km]
 
 # Create a y array
 altitude=2 # [km]
 y=np.ones(len(t))*altitude
 
 # Speed in the x direction
-speed_x=n*a*t**(n-1)
+speed_x=n2*a*t**(n2-1)
 #################### ANIMATION ####################
 frame_amount=len(t)
 dot=np.zeros(frame_amount)
@@ -111,7 +111,7 @@ plt.grid(True)
 
 # Subplot 2
 ax2=fig.add_subplot(gs[1,0],facecolor=(0.9,0.9,0.9))
-x_dist,=ax2.plot([],[],'-b',linewidth=3,label='X=800*t')
+x_dist,=ax2.plot([],[],'-b',linewidth=3,label='X = '+str(a)+'*t^'+str(n2))
 horizontal_line,=ax2.plot([],[],'r:o',linewidth=2,label='Horizontal line')
 vertical_line,=ax2.plot([],[],'g:o',linewidth=2,label='Vertical line')
 plt.xlim(t[0],t[-1])
@@ -126,7 +126,7 @@ plt.legend(loc='upper left',fontsize='x-large')
 
 # Subplot 3
 ax4=fig.add_subplot(gs[1,1],facecolor=(0.9,0.9,0.9))
-speed,=ax4.plot([],[],'-b',linewidth=3,label='deltaX/deltaT = 800')
+speed,=ax4.plot([],[],'-b',linewidth=3,label='dX/dt = '+str(n2*a)+'*t^('+str(n2-1)+')')
 vertical_line_ax4,=ax4.plot([],[],'b:o',linewidth=2)
 division_speed=ax4.text(0.1,speed_x[-1]*2*0.8,'',fontsize=20,color='b')
 plt.xlim(t[0],t[-1])
