@@ -22,8 +22,17 @@ y=np.ones(len(t))*altitude
 #################### ANIMATION ####################
 frame_amount=len(t)
 
+dot=np.zeros(frame_amount)
+n=20
+for i in range(0,frame_amount):
+    if i==n:
+        dot[i]=x[n]
+        n+=20
+    else:
+        dot[i]=x[n-20]
+
 def update_plot(num):
-    plane_trajectory.set_data(x[0:num],y[0:num])
+    plane_trajectory.set_data(dot[0:num],y[0:num])
 
     plane_1.set_data([x[num]-40,x[num]+20],[y[num],y[num]])
     plane_2.set_data([x[num]-20,x[num]],[y[num]+0.3,y[num]])
@@ -42,7 +51,11 @@ gs=gridspec.GridSpec(2,2)
 
 # Subplot 1
 ax0=fig.add_subplot(gs[0,:],facecolor=(0.9,0.9,0.9))
-plane_trajectory,=ax0.plot([],[],'g',linewidth=2)
+
+# Line following the airplane
+plane_trajectory,=ax0.plot([],[],'r:o',linewidth=2)
+
+# Airplane lines
 plane_1,=ax0.plot([],[],'k',linewidth=10)
 plane_2,=ax0.plot([],[],'k',linewidth=5)
 plane_3,=ax0.plot([],[],'k',linewidth=5)
@@ -61,8 +74,6 @@ stopwatch0=ax0.text(1350,0.85,'',size=20,color='g',bbox=box_object)
 
 box_object2=dict(boxstyle='square',fc=(0.9,0.9,0.9),ec='g',lw=1)
 dist_counter0=ax0.text(1350,0.3,'',size=20,color='r',bbox=box_object2)
-
-
 
 
 plt.xlim(x[0],x[-1])
