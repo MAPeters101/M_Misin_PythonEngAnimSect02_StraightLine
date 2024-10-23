@@ -12,14 +12,16 @@ dt=0.005 # [hrs]
 t=np.arange(t0,t_end+dt,dt)
 
 # Create an x array
-x=200*t**3 # [km]
+a=200
+n=3
+x=a*t**n # [km]
 
 # Create a y array
 altitude=2 # [km]
 y=np.ones(len(t))*altitude
 
 # Speed in the x direction
-speed_x=np.ones(len(t))*800
+speed_x=n*a*t**(n-1)
 #################### ANIMATION ####################
 frame_amount=len(t)
 dot=np.zeros(frame_amount)
@@ -56,15 +58,12 @@ def update_plot(num):
     # 3rd subplot
     speed.set_data(t[0:num],speed_x[0:num])
     vertical_line_ax4.set_data([t[num],t[num]],[0,speed_x[num]])
-    if num!=0:
-        division_x_dist.set_text(str(int(x[num])))
-        division_time.set_text(str(round(t[num],3)))
-        division_speed.set_text('= '+str(int(round(x[num]/t[num],1)))+' km/hr')
+    division_speed.set_text('dX/dt = '+str(int(speed_x[num]))+' km/hr')
 
 
     return plane_trajectory,plane_1,plane_2,plane_3,plane_4,plane_5,\
         stopwatch0,dist_counter0,x_dist,horizontal_line,vertical_line, \
-        ax0_vertical,speed,vertical_line_ax4,division_x_dist,division_time, \
+        ax0_vertical,speed,vertical_line_ax4, \
         division_speed
 
 
@@ -129,11 +128,7 @@ plt.legend(loc='upper left',fontsize='x-large')
 ax4=fig.add_subplot(gs[1,1],facecolor=(0.9,0.9,0.9))
 speed,=ax4.plot([],[],'-b',linewidth=3,label='deltaX/deltaT = 800')
 vertical_line_ax4,=ax4.plot([],[],'b:o',linewidth=2)
-division_line,=ax4.plot([0.08,0.40],[995,995],'k',linewidth=1)
-division_x_dist=ax4.text(0.1,1015,'',fontsize=20,color='r')
-division_time=ax4.text(0.1,865,'',fontsize=20,color='g')
-division_speed=ax4.text(0.44,950,'',fontsize=20,color='b')
-
+division_speed=ax4.text(0.1,speed_x[-1]*2*0.8,'',fontsize=20,color='b')
 plt.xlim(t[0],t[-1])
 plt.ylim(x[0],speed_x[-1]*2)
 plt.xticks(np.arange(t[0],t[-1]+dt,t[-1]/4),size=10)
