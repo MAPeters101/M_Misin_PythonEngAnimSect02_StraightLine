@@ -12,8 +12,8 @@ dt=0.005 # [hrs]
 t=np.arange(t0,t_end+dt,dt)
 
 # Create an x array
-a=400
-n2=2
+a=800
+n2=1
 x=a*t**n2 # [km]
 
 # Create a y array
